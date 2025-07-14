@@ -10,3 +10,5 @@ pytest --maxfail=1 --disable-warnings --cov=src
 pytest tests/ --cov=microservicio-A --cov=microservicio-B --cov=microservicio-C --cov-report=html --cov-report=term
 # guardar 5 ultimos commits en un CHANGELOG.md
 git log --oneline -n 5 >> CHANGELOG.md
+# despliegue usando docker compose
+docker-compose build
