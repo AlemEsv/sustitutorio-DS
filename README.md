@@ -8,6 +8,7 @@
 - [Cómo Ejecutar](#ejecutar-código)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Scripts generales](#scripts)
+- [Referencias](#referencias)
 
 ## Descripción
 
@@ -90,7 +91,49 @@ proyecto/
 
 ## Scripts
 
-- **script/compose_builder**
+- **compose_builder.py**
 
     Script que genera mediante un json un archivo docker-compose para levantar las imagenes que utilizan cada uno de los microservicios (A, B y C).
     Luego lo convierte en formato yml y copia el archivo en el directorio establecido.
+
+    ```python
+    python generate_compose.py
+    ```
+
+- **mesh.py**
+
+    Script que realiza llamados al servicio A, gestiona los llamados hacia el servicio B y realiza logging al servicio C mediante requests al servidor cuando se levanta los servicios gracias a docker-compose
+
+    ```python
+    python scripts/mesh.py
+    ```
+
+- **git_graph**
+
+    Script que genera un DAG de los últimos 5 commits hechos, muestra el commit-hash mediante matplotlib.
+
+    ```python
+    python scripts/git_graph.py
+    # saldrá una pantalla mostrando los nodos
+    ```
+
+- **ci.sh**
+
+    Script con la misma funcionalidad que el job "linters" en workflows/ci.yml, el cual se encarga de verificar que la sintaxis de código en bash y python sea la correcta, cambia el formato a uno más generalizado con black y levanta los servicios de manera local con docker-compose.
+
+    ```python
+    python scripts/git_graph.py
+    # saldrá una pantalla mostrando los nodos
+    ```
+
+## Preguntas teóricas
+
+- dd
+
+## Referencias
+
+Código de referencia:
+
+- [https://github.com/AlemEsv/repo-test-susti-1](https://github.com/AlemEsv/repo-test-susti-1)
+- [https://python.igraph.org/en/main/tutorials/generate_dag.html](script-generate-dag)
+- [https://www.oreilly.com/library/view/git-version-control/9781789137545/12ad80de-2c0d-43b6-8157-b991084640e3.xhtml](git-dag)
