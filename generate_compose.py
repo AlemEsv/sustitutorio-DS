@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Generador simple de docker-compose.yml para microservicios
-Versión simplificada y fácil de usar
-"""
-
 import yaml
 import os
 
@@ -13,27 +7,27 @@ def generate_basic_compose():
     
     compose_config = {
         'services': {
-            'microservicio-A': {
-                'build': './microservicio-A',
+            'microservicio-a': {
+                'build': './microservicio-a',
                 'ports': ['8001:8000'],
                 'environment': {
-                    'SERVICE_NAME': 'microservicio-A',
+                    'SERVICE_NAME': 'microservicio-a',
                     'PORT': '8000'
                 }
             },
-            'microservicio-B': {
-                'build': './microservicio-B',
+            'microservicio-b': {
+                'build': './microservicio-b',
                 'ports': ['8002:8000'],
                 'environment': {
-                    'SERVICE_NAME': 'microservicio-B',
+                    'SERVICE_NAME': 'microservicio-b',
                     'PORT': '8000'
                 }
             },
-            'microservicio-C': {
-                'build': './microservicio-C',
+            'microservicio-c': {
+                'build': './microservicio-c',
                 'ports': ['8003:8000'],
                 'environment': {
-                    'SERVICE_NAME': 'microservicio-C',
+                    'SERVICE_NAME': 'microservicio-c',
                     'PORT': '8000'
                 }
             }
