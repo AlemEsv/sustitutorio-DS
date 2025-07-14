@@ -1,0 +1,22 @@
+services:
+  microservicio-A:
+    build: ./microservicio-A
+    ports:
+    - 8001:8000
+    environment:
+      SERVICE_NAME: microservicio-A
+      PORT: '8000'
+  microservicio-B:
+    build: ./microservicio-B
+    ports:
+    - 8002:8000
+    environment:
+      SERVICE_NAME: microservicio-B
+      PORT: '8000'
+  microservicio-C:
+    build: ./microservicio-C
+    ports:
+    - 8003:8000
+    environment:
+      SERVICE_NAME: microservicio-C
+      PORT: '8000'
