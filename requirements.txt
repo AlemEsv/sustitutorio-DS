@@ -6,3 +6,4 @@ fastapi
 httpx
 black
 PyYAML
+pytest-cov
