@@ -7,3 +7,5 @@ httpx
 black
 PyYAML
 pytest-cov
+igraph
+matplotlib
