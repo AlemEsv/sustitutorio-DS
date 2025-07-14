@@ -31,7 +31,7 @@ help:
 	@echo "Available commands:"
 	@echo "  install      - Instalar dependencias"
 	@echo "  lint         - Ejecutar linters para cada microservicio"
-	@echo "  format       - Formatear código con black"
+	@echo "  format       - Formatear codigo con black"
 	@echo "  test         - Ejecutar todas las pruebas"
 	@echo "  coverage     - Genera un reporte HTML con coverage"
 	@echo "  clean        - Limpia el estado del proyecto"
