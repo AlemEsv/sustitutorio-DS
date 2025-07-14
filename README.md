@@ -2,12 +2,12 @@
 
 ## Índice
 
-- [Descripción](#descripcion)
+- [Descripción](#descripción)
 - [Microservicios A,B y C](#microservicios)
-- [Instalación](#instalación)
+- [Instalación](#instalación-offline)
 - [Cómo Ejecutar](#ejecutar-código)
 - [Estructura del Proyecto](#estructura-del-proyecto)
-- [Testing](#pruebas)
+- [Pruebas](#codigo)
 
 
 ## Descripción
@@ -26,8 +26,6 @@ Este proyecto usa patrones de diseño como
 **B** aplica una transformacion a los datos recibidos de **A** y le asigna un inventario a un usuario
 **C** recibe datos de **B** y los guarda/obtiene mantiene etc
 
-"script/compose_builder"
-
 ## Instalación offline
 
 Primero clonamos el repositorio de github para obtener todos los archivos:
@@ -45,33 +43,52 @@ pip install -r requirements.txt
 
 ## Ejecutar código
 
+Se tiene un makefile que ejecuta los linters necesarios(flake8 y shellcheck) para verificar la correcta sintaxis de código para los microservicios, da formato a cada script en python con black, ejecuta pytest para verificar la integridad de las pruebas smoke, E2E e integración, y por último genera un reporte de cobertura general.
+
 ```bash
-# verificar que 
+# ejecuta linters
 make lint
+# formato
+make format
+# ejecuta test con pytest
+make test
+# Genera un reporte HTML con las pruebas
+make coverage
+# Limpia el estado
+make clean
 ```
 
 ## Estructura del Proyecto
 
 ```bash
 proyecto/
+├── .github/
+│   └── workflows/
+│       ├── ci.yml
+│       └── deploy.yml
+├── microservicio-A/
+│   ├── archivos
+│   └── tests/unit-tests
+├── microservicio-B/
+│   ├── archivos
+│   └── tests/unit-tests
+├── microservicio-C/
+│   ├── archivos
+│   └── tests/unit-tests
 ├── tests/
-│   ├── unit/
+│   ├── contract/
+│   ├── e2e/
+│   ├── smoke/
 │   └── integration/
+├── docker-compose.yml
+├── generate_compose.py
 ├── README.md
 └── .gitignore
 ```
 
-## Pruebas
+## Scripts
 
-```bash
-# Ejecutar pruebas
-pytest tests/
-behave tests/integration/
-```
+- **script/compose_builder**
 
-### Cobertura de Código
-
-```bash
-# Generar reporte de cobertura
-pytest --cov=src
-```
+    Script que genera mediante un json un archivo docker-compose para levantar las imagenes que utilizan cada uno de los microservicios (A, B y C).
+    Luego lo convierte en formato yml y copia el archivo en el directorio establecido.
