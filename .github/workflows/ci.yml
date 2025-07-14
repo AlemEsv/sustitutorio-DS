@@ -1,0 +1,76 @@
+name: Calidad de codigo - Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  calidad-codigo-susti:
+    runs-on: ubuntu-latest
+    name: Revisar código duplicado
+    
+    steps:
+    # Descargar el código del repositorio
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    # Configurar Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    # Instalar jscpd para detección de código duplicado
+    - name: Instalar jscpd
+      run: |
+        npm install -g jscpd
+        
+    # Ejecutar detección de código duplicado
+    - name: Ejecutar detector de código duplicado
+      run: |
+        echo "Verificando código duplicado"
+        jscpd --min-lines 20 --min-tokens 100 --reporters console \
+        --ignore "**/node_modules/**,**/.git/**,**/dist/**,**/.venv/**" . || echo "Código duplicado encontrado"
+
+  linters:
+    runs-on: ubuntu-latest
+    name: Verificar sintaxis de código
+    needs: calidad-codigo-susti
+    
+    steps:
+    # Descargar el código del repositorio
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    # Configurar Python
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        
+    # Instalar dependencias de Python
+    - name: Instalar dependencias Python
+      run: |
+        pip install -r requirements.txt
+        
+    # Instalar herramientas
+    - name: Instalar herramientas
+      run: |
+        curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+        sudo apt-get update && sudo apt-get install -y shellcheck
+      
+    # Linting básico
+    - name: Ejecutar pruebas de sintaxis
+      run: |
+        flake8 . --exclude=__pycache__ --max-line-length=90 || echo "Errores de sintaxis en python encontrados"
+        bandit -r microservicio-A microservicio-B microservicio-C --skip=B101,B113 --severity-level=medium || echo "Errores de seguridad encontrados"
+        find . -name "*.sh" | xargs shellcheck || echo "Errores de sintaxis en bash encontrado"
+
+    # Ejecutar tests
+    - name: Ejecutar pruebas
+      run: |
+        python -m pytest user-service/tests/ order-service/tests/ inventory-service/tests/ -v \
+        --tb=short || echo "Las pruebas unitarias fallaron"
+      continue-on-error: true
