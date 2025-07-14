@@ -71,6 +71,6 @@ jobs:
     # Ejecutar tests
     - name: Ejecutar pruebas
       run: |
-        python -m pytest user-service/tests/ order-service/tests/ inventory-service/tests/ -v \
+        python -m pytest tests/ -v \
         --tb=short || echo "Las pruebas unitarias fallaron"
       continue-on-error: true
