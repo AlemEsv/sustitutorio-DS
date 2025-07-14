@@ -128,7 +128,16 @@ proyecto/
 
 ## Preguntas teóricas
 
-- dd
+1. Por qué Git es un DAG
+
+    Git usa gráfos aciclicos para facilitar la vista a diferentes proyectos en base a sus commits, no es posible generar ciclos ya que cada que existen modificaciones en archivos y al ser añadidos al repositorio git, estos cambian su hash, además de esta forma se puede obtener estados anteriores a objetos creados ya que solo se deberá apuntar a un hash de un objeto previo a su modificación.
+
+    Además permite tener múltiples padres, otorgando la estructura de arbol no tan estricta.
+
+    ![dag-de-prueba](images/dag.png)
+
+2. Mediator vs Adapter
+
 
 ## Referencias
 
@@ -137,3 +146,5 @@ Código de referencia:
 - [https://github.com/AlemEsv/repo-test-susti-1](https://github.com/AlemEsv/repo-test-susti-1)
 - [https://python.igraph.org/en/main/tutorials/generate_dag.html](script-generate-dag)
 - [https://www.oreilly.com/library/view/git-version-control/9781789137545/12ad80de-2c0d-43b6-8157-b991084640e3.xhtml](git-dag)
+- [https://medium.com/@a.kago1988/why-the-git-graph-is-a-directed-acyclic-graph-dag-f9052b95f97f](git-dag-vs-tree)
+- [https://refactoring.guru/es/design-patterns](patrones-diseño)
