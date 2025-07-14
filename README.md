@@ -7,18 +7,17 @@
 - [Instalación](#instalación-offline)
 - [Cómo Ejecutar](#ejecutar-código)
 - [Estructura del Proyecto](#estructura-del-proyecto)
-- [Pruebas](#codigo)
-
+- [Scripts generales](#scripts)
 
 ## Descripción
 
 Este proyecto usa patrones de diseño como
 
-- **MEDIATOR**: centralizar coordinación de 3 microservicios
+- **MEDIATOR**: centralizar coordinación de 3 microservicios.
 
-- **FACADE**: orquestar aplicación mediante un makefile
+- **FACADE**: orquestar aplicación mediante un makefile.
 
-- **BUILDER**: genera dinamicamente el archivo docker-compose.yml mediante un archivo de python
+- **BUILDER**: genera dinamicamente el archivo docker-compose.yml mediante un archivo de python.
 
 ## Microservicios
 
@@ -80,6 +79,9 @@ proyecto/
 │   ├── e2e/
 │   ├── smoke/
 │   └── integration/
+├── scripts/
+│   ├── ci.sh
+│   └── mesh.py
 ├── docker-compose.yml
 ├── generate_compose.py
 ├── README.md
