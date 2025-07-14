@@ -138,6 +138,8 @@ proyecto/
 
 2. Mediator vs Adapter
 
+Mediator organiza un objeto mediador por el cual todos los servicios deberían "pasar" para realizar las pruebas extremo a extremo o las pruebas smoke, esto conlleva tiempo y recursos, ya que este objeto busca que todo tipo de servicio sea capaz de comunicarse con el otro mediante dicho mediador, esto permite la inyección de lógica a base de dicho objeto creado.
+En el caso del método Adapter, este último busca la forma de adaptar todos los servicios, sirve para servicios más simples, da menos problemas .
 
 ## Referencias
 
