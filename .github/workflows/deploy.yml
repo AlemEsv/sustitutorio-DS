@@ -38,8 +38,8 @@ jobs:
         context: microservice-A
         push: true
         tags: |
-          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-A:latest
-          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-A:${{ github.sha }}
+          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-a:latest
+          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-a:${{ github.sha }}
 
     - name: Construir y subir microservice-B
       uses: docker/build-push-action@v5
@@ -47,8 +47,8 @@ jobs:
         context: microservice-B
         push: true
         tags: |
-          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-B:latest
-          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-B:${{ github.sha }}
+          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-b:latest
+          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-b:${{ github.sha }}
 
     - name: Construir y subir microservice-C
       uses: docker/build-push-action@v5
@@ -56,8 +56,8 @@ jobs:
         context: microservice-C
         push: true
         tags: |
-          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-C:latest
-          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-C:${{ github.sha }}
+          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-c:latest
+          ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-c:${{ github.sha }}
 
   cleanup:
     needs: build-and-push
