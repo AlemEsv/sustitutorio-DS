@@ -35,7 +35,7 @@ jobs:
     - name: Construir y subir microservice-A
       uses: docker/build-push-action@v5
       with:
-        context: microservice-A
+        context: microservicio-A
         push: true
         tags: |
           ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-a:latest
@@ -44,7 +44,7 @@ jobs:
     - name: Construir y subir microservice-B
       uses: docker/build-push-action@v5
       with:
-        context: microservice-B
+        context: microservicio-B
         push: true
         tags: |
           ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-b:latest
@@ -53,7 +53,7 @@ jobs:
     - name: Construir y subir microservice-C
       uses: docker/build-push-action@v5
       with:
-        context: microservice-C
+        context: microservicio-C
         push: true
         tags: |
           ghcr.io/${{ steps.lowercase.outputs.repo }}/microservicio-c:latest
