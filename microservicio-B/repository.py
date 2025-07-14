@@ -8,12 +8,12 @@ class InventoryRepository(IRepository):
         self.user_items_db = {
             "1": ["item_001", "item_002", "item_003"],
             "2": ["item_004", "item_005"],
-            "3": ["item_006", "item_007", "item_008", "item_009"]
+            "3": ["item_006", "item_007", "item_008", "item_009"],
         }
         self.user_permissions_db = {
             "admin": ["read", "write", "delete"],
             "user": ["read"],
-            "manager": ["read", "write"]
+            "manager": ["read", "write"],
         }
 
     def get_user_items(self, user_id: str):

@@ -14,14 +14,11 @@ class OrderService:
         processed_data = {
             "usuario": user_data.usuario.lower(),
             "contraseña": hashlib.sha256(user_data.contraseña.encode()).hexdigest(),
-            "timestamp": self.repo.get_timestamp()
+            "timestamp": self.repo.get_timestamp(),
         }
 
         # Guardar en el repositorio
         self.repo.save(request_data.id, processed_data)
 
         # Retornar respuesta procesada
-        return {
-            "id": request_data.id,
-            "data_procesada": processed_data
-        }
+        return {"id": request_data.id, "data_procesada": processed_data}

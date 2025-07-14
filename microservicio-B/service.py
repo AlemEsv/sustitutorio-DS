@@ -16,9 +16,11 @@ class InventoryService:
             "user_id": user_id,
             "usuario": processed_data.usuario,
             "items_asignados": self.repo.get_user_items(user_id),
-            "permisos_inventario": self.repo.get_user_permissions(processed_data.usuario),
+            "permisos_inventario": self.repo.get_user_permissions(
+                processed_data.usuario
+            ),
             "timestamp_acceso": processed_data.timestamp,
-            "timestamp_inventario": datetime.datetime.now().isoformat()
+            "timestamp_inventario": datetime.datetime.now().isoformat(),
         }
 
         # Guardar en el repositorio
@@ -28,5 +30,5 @@ class InventoryService:
         return {
             "status": "success",
             "inventory_data": inventory_data,
-            "message": f"Inventario procesado para usuario {processed_data.usuario}"
+            "message": f"Inventario procesado para usuario {processed_data.usuario}",
         }
