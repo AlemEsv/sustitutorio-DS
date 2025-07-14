@@ -1,4 +1,4 @@
-.PHONY: install lint format test coverage clean docker-build docker-up docker-down help
+.PHONY: install lint format test coverage clean all help
 
 # Instalar dependencias
 install:
@@ -25,6 +25,9 @@ clean:
 	rm -rf __pycache__ .pytest_cache .coverage htmlcov
 	find . -name "*.pyc" -delete
 	find . -name "__pycache__" -type d -exec rm -rf {} +
+
+# Ejecutar todos los comandos anteriores
+all: install format lint test coverage clean
 
 # Show help
 help:
