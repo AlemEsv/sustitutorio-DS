@@ -64,7 +64,7 @@ jobs:
     # Linting básico
     - name: Ejecutar pruebas de sintaxis
       run: |
-        flake8 . --exclude=__pycache__ --max-line-length=90 || echo "Errores de sintaxis en python encontrados"
+        flake8 . --exclude=__pycache__ --max-line-length=120 || echo "Errores de sintaxis en python encontrados"
         bandit -r microservicio-A microservicio-B microservicio-C --skip=B101,B113 --severity-level=medium || echo "Errores de seguridad encontrados"
         find . -name "*.sh" | xargs shellcheck || echo "Errores de sintaxis en bash encontrado"
 

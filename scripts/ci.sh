@@ -1,7 +1,7 @@
 # errores en formato de archivos python
-black /src --check
+black . --check
 # errores de sintaxis en archivos python
-flake8 /src #[anotaciones]
+flake8 . --exclude=__pycache__ --max-line-length=120
 # errores de sintaxis en archivos bash
 shellcheck scripts/ci.sh
 # pasar pruebas unitarias
