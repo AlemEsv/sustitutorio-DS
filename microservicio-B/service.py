@@ -10,7 +10,7 @@ class InventoryService:
         # Recibir datos procesados del microservicio A
         user_id = request_data.id
         processed_data = request_data.data_procesada
-        
+
         # Transformar datos para inventario basado en el usuario
         inventory_data = {
             "user_id": user_id,
@@ -20,10 +20,10 @@ class InventoryService:
             "timestamp_acceso": processed_data.timestamp,
             "timestamp_inventario": datetime.datetime.now().isoformat()
         }
-        
+
         # Guardar en el repositorio
         self.repo.save_inventory_access(user_id, inventory_data)
-        
+
         # Retornar inventario transformado
         return {
             "status": "success",

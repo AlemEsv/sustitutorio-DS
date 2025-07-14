@@ -1,5 +1,4 @@
 from interfaces import IRepository
-import json
 
 
 class InventoryRepository(IRepository):
@@ -19,7 +18,7 @@ class InventoryRepository(IRepository):
 
     def get_user_items(self, user_id: str):
         return self.user_items_db.get(user_id, [])
-    
+
     def get_user_permissions(self, username: str):
         # Asignar permisos basados en el nombre de usuario
         if "admin" in username.lower():
@@ -28,10 +27,10 @@ class InventoryRepository(IRepository):
             return self.user_permissions_db["manager"]
         else:
             return self.user_permissions_db["user"]
-    
+
     def save_inventory_access(self, user_id: str, inventory_data: dict):
         self.inventory_db[user_id] = inventory_data
         return True
-    
+
     def get_inventory_access(self, user_id: str):
         return self.inventory_db.get(user_id, None)
