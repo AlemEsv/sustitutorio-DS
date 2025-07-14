@@ -1,10 +1,9 @@
 import yaml
-import os
 
 
 def generate_basic_compose():
     """Genera un docker-compose.yml básico para los 3 microservicios"""
-    
+
     compose_config = {
         'services': {
             'microservicio-a': {
@@ -33,8 +32,9 @@ def generate_basic_compose():
             }
         }
     }
-    
+
     return compose_config
+
 
 def save_compose_file(config, filename):
     """Guarda la configuración en un archivo YML"""
