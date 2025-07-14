@@ -5,10 +5,13 @@ from repository import OrderRepository
 
 app = FastAPI()
 
+
 # dato (usuario y contraseña)
 class UserData(BaseModel):
     usuario: str
+
     contraseña: str
+
 
 # se pedira id y datos de usuario
 class RequestData(BaseModel):
@@ -20,10 +23,12 @@ def get_order_service():
     repo = OrderRepository()
     return OrderService(repo)
 
+
 # consultar estado de la aplicacion
 @app.get("/ping")
 def ping():
     return {"status": "ok"}
+
 
 # recibe un archivo json con un dato(id, data: {usuario, contraseña})
 # devuelve un archivo json con datos procesados(id, data_procesada)
