@@ -6,6 +6,7 @@ services:
     environment:
       SERVICE_NAME: microservicio-a
       PORT: '8000'
+      profiles: '["debug", "release"]'
   microservicio-b:
     build: ./microservicio-b
     ports:
@@ -13,6 +14,7 @@ services:
     environment:
       SERVICE_NAME: microservicio-b
       PORT: '8000'
+      profiles: '["debug", "release"]'
   microservicio-c:
     build: ./microservicio-c
     ports:
@@ -20,3 +22,4 @@ services:
     environment:
       SERVICE_NAME: microservicio-c
       PORT: '8000'
+      profiles: '["debug", "release"]'

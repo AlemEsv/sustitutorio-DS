@@ -1,6 +1,5 @@
 import yaml
 
-
 def generate_basic_compose():
     """Genera un docker-compose.yml básico para los 3 microservicios"""
 
@@ -11,7 +10,8 @@ def generate_basic_compose():
                 'ports': ['8001:8000'],
                 'environment': {
                     'SERVICE_NAME': 'microservicio-a',
-                    'PORT': '8000'
+                    'PORT': '8000',
+                    'profiles': '["debug", "release"]'
                 }
             },
             'microservicio-b': {
@@ -19,7 +19,8 @@ def generate_basic_compose():
                 'ports': ['8002:8000'],
                 'environment': {
                     'SERVICE_NAME': 'microservicio-b',
-                    'PORT': '8000'
+                    'PORT': '8000',
+                    'profiles': '["debug", "release"]'
                 }
             },
             'microservicio-c': {
@@ -27,7 +28,8 @@ def generate_basic_compose():
                 'ports': ['8003:8000'],
                 'environment': {
                     'SERVICE_NAME': 'microservicio-c',
-                    'PORT': '8000'
+                    'PORT': '8000',
+                    'profiles': '["debug", "release"]'
                 }
             }
         }
